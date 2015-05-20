@@ -16,36 +16,50 @@ $app->get('/', function() use ($app) {
 });
 
 
-$app->group(['namespace' => 'App\Http\Controllers'], function($app) {
+$app->group(['prefix' => 'studios', 'namespace' => 'App\Http\Controllers'], function($app) {
 
-    $app->get('studios', [
+    $app->get('/', [
         'as'   => 'studios.index',
         'uses' => 'StudiosController@index'
     ]);
 
-    $app->get('studios/{id}', [
+    $app->get('{id}', [
         'as'   => 'studios.view',
         'uses' => 'StudiosController@view'
     ]);
 
-    $app->post('studios/add',[
+    $app->post('add',[
         'as'   => 'studios.add',
         'uses' => 'StudiosController@create'
     ]);
 
-    $app->post('studios/update/{id}',[
+    $app->post('update/{id}',[
         'as'   => 'studios.update',
         'uses' => 'StudiosController@update'
     ]);
 
-    $app->get('bands', [
+});
+
+$app->group(['prefix' => 'bands', 'namespace' => 'App\Http\Controllers'], function($app) {
+
+    $app->get('/', [
         'as'   => 'bands.index',
         'uses' => 'BandsController@index'
     ]);
 
-    $app->get('bands/{id}', [
+    $app->get('{id}', [
         'as'   => 'bands.view',
         'uses' => 'BandsController@view'
+    ]);
+
+    $app->post('add',[
+        'as'   => 'bands.add',
+        'uses' => 'BandsController@create'
+    ]);
+
+    $app->post('update/{id}',[
+        'as'   => 'bands.update',
+        'uses' => 'BandsController@update'
     ]);
 
 });
