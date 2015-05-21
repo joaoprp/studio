@@ -20,7 +20,7 @@ class Controller extends BaseController
 
         $this->baseModel->fill($request->all());
 
-        if($this->baseModel->save()) {
+        if($this->baseModel->push()) {
             return response()->json(['msg' => 'Saved successfuly']);
         } else {
             return response()->json(['msg' => 'Oops, something happened']);
@@ -32,7 +32,7 @@ class Controller extends BaseController
 
         $this->baseModel->fill($request->all());
 
-        if($this->baseModel->save()) {
+        if($this->baseModel->push()) {
             return response()->json(['msg' => 'Saved successfuly']);
         } else {
             return response()->json(['msg' => 'Oops, something happened']);

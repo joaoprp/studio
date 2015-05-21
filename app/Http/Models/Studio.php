@@ -8,9 +8,13 @@ class Studio extends Model {
     protected $fillable = ['name','address','city','state','country','phone','email'];
 
     public $rules = [
-        'name' => 'required',
+        'name'    => 'required',
         'address' => 'required',
-        'phone' => 'required',
-        'email' => 'required|unique:studios'
+        'phone'   => 'required',
+        'email'   => 'required|unique:studios'
     ];
+
+    public function users() {
+        return $this->belongsToMany('User');
+    }
 }

@@ -64,3 +64,27 @@ $app->group(['prefix' => 'bands', 'namespace' => 'App\Http\Controllers'], functi
 
 });
 
+$app->group(['prefix' => 'users', 'namespace' => 'App\Http\Controllers'], function($app) {
+
+    $app->get('/', [
+        'as'   => 'users.index',
+        'uses' => 'UsersController@index'
+    ]);
+
+    $app->get('{id}', [
+        'as'   => 'users.view',
+        'uses' => 'UsersController@view'
+    ]);
+
+    $app->post('add',[
+        'as'   => 'users.add',
+        'uses' => 'UsersController@create'
+    ]);
+
+    $app->post('update/{id}',[
+        'as'   => 'users.update',
+        'uses' => 'UsersController@update'
+    ]);
+
+});
+
